@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider     = "prisma-client-js"
+  output       = "../generated/prisma"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+generator prismaClassGenerator {
+  provider                 = "prisma-class-generator"
+  dryRun                   = false
+  output                   = "../generated/prisma-class-generator"
+  separateRelationFields   = true
+  useNonNullableAssertions = false
+}
