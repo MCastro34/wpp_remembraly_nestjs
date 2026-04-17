@@ -6,6 +6,9 @@ model Task {
   status      Status    @default(BACKLOG)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id])
 }
 
 enum Status {
