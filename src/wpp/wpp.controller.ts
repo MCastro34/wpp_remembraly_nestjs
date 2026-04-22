@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  ForbiddenException,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { WppService } from './wpp.service';
 import { MessageReceivedDTO } from './dto/wpp.dto';
 
@@ -7,12 +16,17 @@ export class WppController {
   constructor(private readonly wppService: WppService) {}
 
   @Get()
+  @HttpCode(HttpStatus.OK)
   verifyWebhook(
     @Query('hub.mode') mode: string,
     @Query('hub.verify_token') token: string,
     @Query('hub.challenge') challenge: string,
   ) {
-    return this.wppService.verifyWebhook(mode, token, challenge);
+    const result = this.wppService.verifyWebhook(mode, token, challenge);
+    if (!result) {
+      throw new ForbiddenException();
+    }
+    return challenge;
   }
 
   @Post()
