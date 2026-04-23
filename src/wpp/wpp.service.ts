@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class WppService {
   verifyWebhook(mode: string, token: string, challenge: string) {
     console.log(mode, token, challenge);
+    console.log('Expected token:', process.env.VERIFY_TOKEN);
     if (mode === 'subscribe' && token === process.env.VERIFY_TOKEN) {
       console.log('WEBHOOK VERIFIED');
       return true;
