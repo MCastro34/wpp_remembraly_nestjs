@@ -33,4 +33,9 @@ export class WppController {
   receiveMessage(@Body() args: MessageReceivedDTO) {
     return this.wppService.receiveMessage(args);
   }
+
+  @Get('daily-reminder')
+  sendDailyReminder() {
+    return this.wppService.dailyReminder();
+  }
 }
