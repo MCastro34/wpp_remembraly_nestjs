@@ -6,9 +6,7 @@ import { TaskService } from '../task/task.service';
 export class WppService {
   constructor(private readonly _taskService: TaskService) {}
 
-  verifyWebhook(mode: string, token: string, challenge: string) {
-    console.log(mode, token, challenge);
-    console.log('Expected token:', process.env.VERIFY_TOKEN);
+  verifyWebhook(mode: string, token: string) {
     if (mode === 'subscribe' && token === process.env.VERIFY_TOKEN) {
       console.log('WEBHOOK VERIFIED');
       return true;

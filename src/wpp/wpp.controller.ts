@@ -22,7 +22,7 @@ export class WppController {
     @Query('hub.verify_token') token: string,
     @Query('hub.challenge') challenge: string,
   ) {
-    const result = this.wppService.verifyWebhook(mode, token, challenge);
+    const result = this.wppService.verifyWebhook(mode, token);
     if (!result) {
       throw new ForbiddenException();
     }
