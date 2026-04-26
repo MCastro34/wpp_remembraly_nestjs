@@ -20,6 +20,25 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "strictPropertyInitialization": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+    "composite": false,
+    "paths": {
+      "@gen/prisma-class-generator": [
+        "./generated/prisma-class-generator/index.ts"
+      ],
+      "@gen/prisma-client": ["./generated/prisma-client"],
+      "@gen/prisma-client/runtime/library": [
+        "./generated/prisma-client/runtime/library"
+      ],
+      "@prisma/client": ["./generated/prisma-client"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "apps/**/*.ts",
+    "libs/**/*.ts",
+    "prisma/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }
